@@ -1,1 +1,0 @@
-collection of color schemes for multiple sequence alignment.

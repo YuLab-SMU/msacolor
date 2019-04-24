@@ -13,7 +13,7 @@
 #' @author huina huang 
 color_scheme<-function(seq,scheme_df){
   #preprocess data
-  seq<-as.matrix(testseq)       
+  seq<-as.matrix(seq)       
   seq<-toupper(seq)         #make sure the suquence is capital format
   scheme_df<-scheme_df[-24,]    #remove the last line containing character "-" in scheme_df
   seqnum<-dim(seq)[1]    #get the sequence number of aligned sequence 

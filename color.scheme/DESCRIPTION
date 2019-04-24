@@ -12,3 +12,4 @@ Suggests:
     knitr,
     rmarkdown
 VignetteBuilder: knitr
+Imports:stringr

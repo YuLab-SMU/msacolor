@@ -28,7 +28,7 @@ color_scheme<-function(seq,scheme_df){
       char <- names(x)[pos]
       i <- grep(char, col_df$re_position)
       for (j in i) {
-        rr<-r[re_gp[j]]
+        rr<-r[re_gp[[j]]]
         rr<-rr[!(is.na(rr))]     ##get frequency of the character in the col_df$re_gp[j]
 
         ##the situation without , in 're_gp'

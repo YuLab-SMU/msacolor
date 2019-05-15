@@ -17,7 +17,7 @@ color_scheme<-function(seq,scheme_df){
 
 
   seqlist <- apply(seq, 2, table)  ##calculate character frequency
-
+  re_gp<-sapply(scheme_df$re_gp,function(i){strsplit(i, '')[[1]]})  ##seperate the scheme_df$re_gp
 
   ##assign color to character based from frequency
   col_convert <- lapply(seqlist, function(x) {
@@ -28,7 +28,7 @@ color_scheme<-function(seq,scheme_df){
       char <- names(x)[pos]
       i <- grep(char, col_df$re_position)
       for (j in i) {
-        rr<-r[strsplit(col_df$re_gp[j], '')[[1]]]
+        rr<-r[re_gp[[j]]]
         rr<-rr[!(is.na(rr))]     ##get frequency of the character in the col_df$re_gp[j]
 
         ##the situation without , in 're_gp'

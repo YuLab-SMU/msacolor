@@ -24,20 +24,22 @@ color_scheme<-function(seq,scheme_df){
     y <- rep("white", length(x))
     names(y) <- names(x)
     r <- x/sum(x)
+    ii<-lapply(names(x),function(char){grep(char, col_df$re_position)})  ##get the matched lines of each character in x
+    
     y<-sapply(seq_along(x),function(pos){
       char <- names(x)[pos]
-      i <- grep(char, col_df$re_position)
+      i<-ii[[pos]]
       for (j in i) {
         rr<-r[re_gp[[j]]]
         rr<-rr[!(is.na(rr))]     ##get frequency of the character in the col_df$re_gp[j]
         
-        ##the situation without , in 're_gp'
+        ##the situation without , in re_gp, that is to say the type of 're_gp' is 'combined'
         if (sum(rr) > col_df$thred[j] && col_df$type[j]=="combined" && length(rr)>1) {
           y[pos] <- col_df$colour[j]
           break
         }
         
-        ##the situation with , in 're_gp'
+        ##the situation with , in re_gp, that is to say the type of 're_gp' is 'individual'
         if(any(rr>col_df$thred[j])  && col_df$type[j]=="individual"){
           y[pos] <- col_df$colour[j]
           break

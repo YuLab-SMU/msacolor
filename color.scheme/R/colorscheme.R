@@ -21,14 +21,17 @@ color_scheme<-function(seq,scheme_df){
 
   ##assign color to character based from frequency
   col_convert <- lapply(seqlist, function(x) {
-    y <- rep("white", length(x))
-    names(y) <- names(x)
     r <- x/sum(x)
-    ii<-lapply(names(x),function(char){grep(char, col_df$re_position)})  ##get the matched lines of each character in x
+    xi<-lapply(names(x),function(char){grep(char, col_df$re_position)})  ##get the matched lines of each character in x
+    names(xi)<-names(x)
+    xxi<-xi[!duplicated(xi)] ##remain the non-duplicated element of xi in xxi 
     
-    y<-sapply(seq_along(x),function(pos){
-      char <- names(x)[pos]
-      i<-ii[[pos]]
+    y<-sapply(seq_along(xxi),function(pos){
+      y <- rep("white", length(xxi))
+      names(y) <- names(xxi)
+      char <- names(xxi)[pos]
+      i<-xxi[[pos]]
+      
       for (j in i) {
         rr<-r[re_gp[[j]]]
         rr<-rr[!(is.na(rr))]     ##get frequency of the character in the col_df$re_gp[j]
@@ -47,7 +50,19 @@ color_scheme<-function(seq,scheme_df){
       }
       return(y[pos])
     })
-    return(y)
+    
+    dup_aa<-xi[duplicated(xi)]   ##remain the duplicated element of xi in dup_aa
+    
+    ##mapping the color to the character in dup_aa which are the duplicated element in xi
+    dup_color<-sapply(dup_aa,function(aa){
+      col<-y[xxi %in% list(aa)]
+      col<-unlist(col)
+      names(col)<-names(aa)
+      return(col)
+    })
+    
+    yy<-c(y,dup_color)
+    return(yy)
   })
 
   seqcolor <- lapply(seq_along(col_convert), function(i) {

@@ -34,9 +34,7 @@ color_scheme <- function(seq, scheme_df) {
     r <- x/sum(x)
     
     ##get the matched lines of each character of x in scheme_df
-    re_pos <- lapply(names(x), function(char) {
-      grep(char, scheme_df$re_position)
-    })      
+    re_pos <- lapply(names(x), function(char) grep(char, scheme_df$re_position))      
     names(re_pos) <- names(x)
     
     ##seperate the character in re_pos based on the matched lines of character whether are duplicated 
@@ -44,11 +42,11 @@ color_scheme <- function(seq, scheme_df) {
     re_pos_dup <- re_pos[duplicated(re_pos)]   
     
     
+    
+    y <- rep("white", length(re_pos_unique))
+    names(y) <- names(re_pos_unique)
     ##assign color to character which are the names of elements in re_pos_unique 
     unique_color <- lapply(seq_along(re_pos_unique), function(pos) {
-      y <- rep("white", length(re_pos_unique))
-      names(y) <- names(re_pos_unique)
-      char <- names(re_pos_unique)[pos]
       i <- re_pos_unique[[pos]]
       
       for (j in i) {

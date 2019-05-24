@@ -16,17 +16,8 @@ color_scheme <- function(seq, scheme_df) {
   seq <- toupper(seq)       ##make sure the suquence is capital format
   
   
-  seqlist <- apply(seq, 2, table)  ##calculate character frequency
-  ##seperate the re_gp
-  re_gp <- lapply(scheme_df$re_gp, function(i) strsplit(i, "")[[1]])
-  
-  ##the situation that the seq has only a column
-  if(!(is.list(seqlist))){
-    seqlist1 <- as.vector(seqlist)
-    names(seqlist1) <- rownames(seqlist)
-    seqlist2 <- list(as.table(seqlist1))
-    seqlist<-seqlist2
-  }
+  seqlist <- lapply(as.data.frame(seq), table)  ##calculate character frequency
+  re_gp <- lapply(scheme_df$re_gp, function(i) strsplit(i, "")[[1]])  ##seperate the re_gp
   
   
   ##assign color to character based from frequency

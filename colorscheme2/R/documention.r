@@ -89,6 +89,7 @@ NULL
 #' @format A data frame with 20 rows and 2 variables
 NULL
 
+
 #' color scheme of sequence which are nucleotides aligned according to Taylor 
 #'
 #' A dataset containing the color scheme of 5 observations of 2
@@ -105,6 +106,7 @@ NULL
 #' @usage data(Taylor_nucle_coldf)
 #' @format A data frame with 5 rows and 2 variables
 NULL
+
 
 #' color scheme of sequence which are amino acids aligned according to Zappo 
 #'
@@ -140,6 +142,42 @@ NULL
 #' @name Zappo_nucle_coldf
 #' @usage data(Zappo_nucle_coldf)
 #' @format A data frame with 6 rows and 2 variables
+NULL
+
+
+#' color scheme of sequence which are nucleotides aligned according to solid(light color)
+#'
+#' A dataset containing the color scheme of 5 observations of 2
+#' variables. The variables are as follows:
+#'
+#' \itemize{
+#'    \item{\code{nucleotide}}{a character vector}
+#'    \item{\code{color}}{a character vector}
+#' }
+#'
+#' @docType data
+#' @keywords datasets
+#' @name solid_nucle_dimmed_coldf
+#' @usage data(solid_nucle_dimmed_coldf)
+#' @format A data frame with 5 rows and 2 variables
+NULL
+
+
+#' color scheme of sequence which are nucleotides aligned according to solid(dark color)
+#'
+#' A dataset containing the color scheme of 5 observations of 2
+#' variables. The variables are as follows:
+#'
+#' \itemize{
+#'    \item{\code{nucleotide}}{a character vector}
+#'    \item{\code{color}}{a character vector}
+#' }
+#'
+#' @docType data
+#' @keywords datasets
+#' @name solid_nucle_dark_coldf
+#' @usage data(solid_nucle_dark_coldf)
+#' @format A data frame with 5 rows and 2 variables
 NULL
 
 

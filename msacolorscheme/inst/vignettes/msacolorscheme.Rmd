@@ -1,0 +1,19 @@
+---
+title: "msacolorscheme"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{msacolorscheme}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r}
+library(msacolorscheme)
+data("sampleseq")
+data("chemi_aa_coldf")
+msa_color_sheme(sampleseq, "chemi_aa_coldf")
+```
+
+```{r setup}
+library(msacolorscheme)
+```
